@@ -24,5 +24,11 @@ public class ProductController {
 	public ResponseEntity<Product> createProduct(@RequestBody ProductDTO productDTO) {
 		return ResponseEntity.ok(productService.save(new Product(productDTO)));
 	}
+	
+	@PostMapping("/cart")
+	public ResponseEntity<Product> addToCart(@RequestBody ProductDTO productDTO){
+		productService.addToCart(new Product(productDTO));
+		return ResponseEntity.noContent().build();
+	}
 
 }
