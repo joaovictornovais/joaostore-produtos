@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.joaostore.msproduto.dto.ProductDTO;
 import com.joaostore.msproduto.model.Product;
 import com.joaostore.msproduto.service.ProductService;
 
@@ -20,8 +21,8 @@ public class ProductController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-		return ResponseEntity.ok(productService.save(product));
+	public ResponseEntity<Product> createProduct(@RequestBody ProductDTO productDTO) {
+		return ResponseEntity.ok(productService.save(new Product(productDTO)));
 	}
 
 }
